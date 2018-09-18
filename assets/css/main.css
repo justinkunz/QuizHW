@@ -1,10 +1,15 @@
-.ans:hover,
+.ans:hover {
+    font-weight:bold;
+    border: 5px solid #36d080;
+    border-radius: 5px;
+    padding:0px
+}
 .chosen {
     background-color:#36d080;
     font-weight:bold;
 }
 .ans {
-    margin:0px;
+    padding:5px;
 }
 body {
     background-image:url('../images/background.jpg');
