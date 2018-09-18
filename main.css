@@ -1,0 +1,35 @@
+.ans:hover {
+    background-color:#36d080;
+}
+.ans {
+    margin:0px;
+}
+.chosen {
+    background-color:#36d080;
+}
+body {
+    background-image:url('background.jpg');
+    font-family: 'Raleway', sans-serif;
+}
+#topTitle {
+    width: 100%;
+    background-color: rgb(24, 22, 22);
+    color: rgb(245, 243, 243);
+    opacity:0.8;
+    font-size:30px;
+    text-align:center;
+}
+#qDiv {
+    text-align:center;
+    padding:5px 0px 5px 0px;
+    background-color:#1f8093;
+    width:50%;
+    margin-top:3vh;
+    margin-left:25%;
+    opacity:0.7;
+}
+/* #question,
+#timeRem {
+    background-color:rgb(24, 22, 22);
+    color:rgb(245, 243, 243);
+} */
