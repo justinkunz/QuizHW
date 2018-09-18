@@ -1,7 +1,7 @@
 .ans:hover {
     font-weight:bold;
-    border: 5px solid #36d080;
-    border-radius: 5px;
+    border: 3px solid #36d080;
+    border-radius: 10px;
     padding:0px
 }
 .chosen {
@@ -9,7 +9,7 @@
     font-weight:bold;
 }
 .ans {
-    padding:5px;
+    padding:3px;
 }
 body {
     background-image:url('../images/background.jpg');
