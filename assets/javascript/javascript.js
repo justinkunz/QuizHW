@@ -24,7 +24,7 @@
             rightAns: "C) Paul"
         },
         {
-            question: "In what year was the first Beatles album released",
+            question: "In what year was the first Beatles album released?",
             ansA: "1963",
             ansB: "1961",
             ansC: "1964",
@@ -32,7 +32,7 @@
             rightAns: "A) 1963"
         },
         {
-            question: "In what year was the last Beatles album  released",
+            question: "In what year was the last Beatles album  released?",
             ansA: "1971",
             ansB: "1967",
             ansC: "1973",
@@ -124,10 +124,16 @@
             //reset chosenAns to empty 
             chosenAns = ''
 
+
             //if there are no more questions, call noMoreQ function
             if (remainingQues === 0) {
                 noMoreQ()
                 return
+            }
+            
+            //if this is the last question, change text of button
+            if(remainingQues===1){
+                $('#next').text('Submit Quiz')
             }
             chooseRanQ()
 
@@ -149,7 +155,12 @@
 
             //set initial time to 10, display
             timeCount = 10
+
+            //reset time display text
             timeRem.text(timeCount + ' seconds remaining')
+
+            //remove warningRed class (gets triggered if remaining time is less than 3)
+            timeRem.removeClass('warningRed')
 
             //call updateTime function every second
             countdown = setInterval(updateTime, 1000)
@@ -170,7 +181,10 @@
 
         //when user clicks the next button
         $('#next').on('click', function () {
-
+            //if user tries to click next button w/o choosing answer, alert, return, do nothing
+            if (chosenAns === '') {
+                return
+            }
             //call next question function
             nextQuestion()
         });
@@ -184,11 +198,6 @@
             //remove the 'chosen' class from answer (so css styling doesn't carry over into next Q)
             $('.ans').removeClass('chosen')
 
-            //if user tries to click next button w/o choosing answer, alert, return, do nothing
-            if (chosenAns === '') {
-                alert('Please choose an answer before preceeding to the next question')
-                return
-            }
 
             //if the chosen answer was the correct answer
             if (chosenAns === curRightAns) {
@@ -257,10 +266,17 @@
                 wrongAnsDiv.append(wrongAnsChosDiv)
 
                 //pull right answer from array where index = i
-                var wrongAnsRightDiv = $('<div> <b> Right Answer:</b> ' + wrongAnsRight[i] + '</div> <br>')
+                var wrongAnsRightDiv = $('<div> <b> Right Answer:</b> ' + wrongAnsRight[i] + '</div>')
 
                 //apend to wrongAnsDiv
                 wrongAnsDiv.append(wrongAnsRightDiv)
+
+                //create line div for seperating questions
+                var line = $("<div>")
+                line.addClass('line')
+
+                //append div to wrong ans div
+                wrongAnsDiv.append(line)
 
                 //append wrong answer div to existing wrongQs div
                 $('#wrongQs').append(wrongAnsDiv)
@@ -277,6 +293,13 @@
             //push formatted timeCount text
             timeRem.text(timeCount + ' seconds remaining')
 
+            //if time remaining is 3 seconds or less
+            if(timeCount <=3 ){
+                
+                //add class to change text color to red, make font bigger
+                timeRem.addClass("warningRed")
+            }
+            console.log(timeCount)
             //if no more time remains
             if (timeCount === 0) {
                 
